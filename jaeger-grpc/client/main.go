@@ -18,11 +18,12 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"jaeger-grpc/config"
 	"log"
 	"time"
 
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/api"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/config"
+	// "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/config"
 
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 

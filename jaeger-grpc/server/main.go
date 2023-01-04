@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"jaeger-grpc/config"
 	"log"
 	"net"
 	"time"
@@ -27,7 +28,6 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/api"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/config"
 
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 
@@ -145,6 +145,9 @@ func main() {
 	)
 
 	api.RegisterHelloServiceServer(s, &server{})
+
+	log.Printf("listen%s\n", port)
+
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
