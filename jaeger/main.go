@@ -21,6 +21,8 @@ import (
 	"log"
 	"time"
 
+	"github.com/go-logr/stdr"
+
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/exporters/jaeger"
@@ -60,6 +62,12 @@ func tracerProvider(url string) (*tracesdk.TracerProvider, error) {
 }
 
 func main() {
+	stdr.SetVerbosity(5)
+	// l := stdr.New(log.New(os.Stdout, "", log.LstdFlags|log.Lshortfile))
+
+	// fmt.Println(l.V(5).Enabled())
+	// otel.SetLogger()
+
 	tp, err := tracerProvider("http://localhost:14268/api/traces")
 	if err != nil {
 		log.Fatal(err)
@@ -88,9 +96,11 @@ func main() {
 	defer span.End()
 
 	bar(ctx)
+
 }
 
 func bar(ctx context.Context) {
+
 	// Use the global TracerProvider.
 	tr := otel.Tracer("component-bar")
 	_, span := tr.Start(ctx, "bar")
