@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  grpc-dev:
+    build:
+      context: .
+    container_name: grpc-dev
+    volumes:        
+        - './:/workspace'
+        # - '../../dev-data/vsc-extensions:/root/.vscode-server/extensions'
+        # - '../../dev-data/.hunter:/root/.hunter'
+    stdin_open: true
+    tty: true
