@@ -27,6 +27,8 @@ service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   // Sends another greeting
   rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+
+  rpc Tx(TxReq) returns (TxResp) {}
 }
 
 // The request message containing the user's name.
@@ -34,7 +36,20 @@ message HelloRequest {
   string name = 1;
 }
 
+
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
+}
+
+message Tx {
+  string data = 1;
+}
+
+message TxReq {
+  repeated Tx txs = 1;
+}
+
+message TxResp {
+  string msg = 1;
 }

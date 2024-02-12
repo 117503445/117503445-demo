@@ -22,6 +22,8 @@ import helloworld_pb2
 import helloworld_pb2_grpc
 
 
+batchs = []
+
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
     def SayHello(self, request, context):
@@ -29,6 +31,10 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
     def SayHelloAgain(self, request, context):
         return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
+
+    def Tx(self, request, context):
+        print('txs len:', len(request.txs))
+        return helloworld_pb2.TxResp(msg='ok')
 
 
 def serve():

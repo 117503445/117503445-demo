@@ -21,14 +21,33 @@ import grpc
 import helloworld_pb2
 import helloworld_pb2_grpc
 
+from time import perf_counter
 
 def run():
     channel = grpc.insecure_channel('localhost:50051')
     stub = helloworld_pb2_grpc.GreeterStub(channel)
-    response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
-    print("Greeter client received: " + response.message)
-    response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
-    print("Greeter client received: " + response.message)
+
+    # response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
+    # print("Greeter client received: " + response.message)
+    # response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
+    # print("Greeter client received: " + response.message)
+
+    BATCH_SIZE = 100000
+
+    batchs = []
+    for _ in range(700):
+        txs = []
+        for i in range(BATCH_SIZE):
+            txs.append(helloworld_pb2.Tx(data='tx' + str(i)))
+        batchs.append(txs)
+
+    t1_start = perf_counter()
+    for txs in batchs:
+        response = stub.Tx(helloworld_pb2.TxReq(txs=txs))
+        print("Greeter client received: " + response.msg)
+    t1_stop = perf_counter()
+    print("Elapsed time during the whole program in seconds:",
+                                        t1_stop-t1_start)
 
 
 if __name__ == '__main__':
