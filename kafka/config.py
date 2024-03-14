@@ -1,2 +1,3 @@
-SERVER = '127.0.0.1:9092'
+# SERVER = 'kafka:9092'
+SERVER = 'kafka:9092'
 TOPIC = 'howtousekafka'

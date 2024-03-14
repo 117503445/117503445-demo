@@ -11,20 +11,19 @@
 编辑 .env 把 hostip 改为自己的
 
 ```sh
-docker-compose up
+docker compose up
 ```
 
 ## 例子
 
 ```sh
-pip install -r requirements.txt
-python consumer.py
-python producer.py
+conda create -n kafka python=3.11
+/root/miniconda3/envs/kafka/bin/pip install -r requirements.txt
+/root/miniconda3/envs/kafka/bin/python consumer.py
+/root/miniconda3/envs/kafka/bin/python producer.py
 ```
 
 ## 概念解析
-
-// 可能有错
 
 topic - 队列
 
