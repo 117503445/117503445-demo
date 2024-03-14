@@ -59,7 +59,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=kafka-1:9092
+      - KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=kafka:9092
       - KAFKA_CLUSTERS_0_NAME=r4zt_wrqTRuT7W2NJsB_GA
   kafka-dev:
     image: 117503445/dev-python
