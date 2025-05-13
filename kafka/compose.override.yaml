@@ -1,0 +1,7 @@
+services:
+  kafka:
+    image: registry.cn-hangzhou.aliyuncs.com/117503445-mirror/sync@sha256:35d1fa4822c24491444e124b2e25be696d49c8f032c60b661ec4b9b8dd46abf0
+  kafka-ui:
+    image: registry.cn-hangzhou.aliyuncs.com/117503445-mirror/sync@sha256:4346a0af1450f52286e671a6b49f701d069d7306a802f7cf6743bd27ac4dbcd1
+  dev:
+    image: registry.cn-hangzhou.aliyuncs.com/117503445-mirror/sync@sha256:ad0777e0ffa76adde9971caea6c1a4c7fb474b69c35c24298eaa5f2ddf5db36d
